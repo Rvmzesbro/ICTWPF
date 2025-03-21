@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace ICT.Pages
     /// </summary>
     public partial class Main : Page
     {
-        public Main()
+        public employee EmployeeContext {  get; set; }
+        
+        public Main(employee employeeContext)
         {
             InitializeComponent();
+            EmployeeContext = employeeContext;
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            DGName.Text = $"Hello {EmployeeContext.Name}!";
+            DGChat.ItemsSource = App.db.chatroom.ToList();
         }
 
         private void Button_CloseApplication(object sender, RoutedEventArgs e)
@@ -39,5 +50,6 @@ namespace ICT.Pages
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

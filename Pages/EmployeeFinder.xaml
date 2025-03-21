@@ -47,9 +47,7 @@
             </StackPanel>
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
-                    <ListBox>
-
-                    </ListBox>
+                    
                 </StackPanel>
             </ScrollViewer>
         </Grid>

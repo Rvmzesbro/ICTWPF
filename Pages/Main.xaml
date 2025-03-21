@@ -20,17 +20,19 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel >
-            <!--<TextBlock Text="{Binding EmployeeContext.Name,StringFormat='Hello {0}!' }"></TextBlock>-->
+            <TextBlock x:Name="DGName"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Your open chatrooms"></TextBlock>
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                <!--<ListBox SelectionChanged="SelectingItemsControl_OnSelectionChanged" ItemsSource="{Binding ChatroomContext }">
-                    <TextBlock Text="{Binding ChatroomContext.Topic}"></TextBlock>
-                </ListBox>
-                <TextBlock Text="{Binding ChatroomContext.Topic}"></TextBlock>-->
+                <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Topic" Binding="{Binding Topic}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Last Message" Binding="{Binding LastChatMessage.Date}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">

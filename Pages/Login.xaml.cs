@@ -29,6 +29,7 @@ namespace ICT.Pages
         {
             InitializeComponent();
             EmployeeContext = new employee();
+            this.Loaded += Login_Load;
         }
 
         private void Button_Ok(object sender, RoutedEventArgs e)
@@ -40,19 +41,21 @@ namespace ICT.Pages
                 return;
             }
 
-            else if (Remember.IsChecked == true)
+            else
             {
-
-                Properties.Settings.Default.username = username;
-                Properties.Settings.Default.password = password;
-                Properties.Settings.Default.Save();
+                if(Remember.IsChecked == true)
+                {
+                    Properties.Settings.Default.username = username;
+                    Properties.Settings.Default.password = password;
+                    Properties.Settings.Default.Save();
+                }
 
                 using (var db = new ICTEntities3())
                 {
                     EmployeeContext = db.employee.FirstOrDefault(p => p.Username == username && p.Password == password);
                     if (EmployeeContext != null)
                     {
-                        NavigationService.Navigate(new Main());
+                        NavigationService.Navigate(new Main(EmployeeContext));
                     }
                     else
                     {

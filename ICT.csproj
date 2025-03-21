@@ -177,5 +177,8 @@
       <LastGenOutput>ICT.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Parials\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

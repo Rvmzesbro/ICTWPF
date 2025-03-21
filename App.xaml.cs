@@ -14,7 +14,7 @@ namespace ICT
     /// </summary>
     public partial class App : Application
     {
-        public static ICTEntities3 IctContext = new ICTEntities3();
+        public static ICTEntities3 db = new ICTEntities3();
         public static MainWindow MainWindow;
         
     }
