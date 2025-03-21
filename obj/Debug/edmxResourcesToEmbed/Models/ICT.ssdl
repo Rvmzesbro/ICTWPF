@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ICTModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="chatmessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Sender_Id" Type="bigint" Nullable="false" />
+    <Property Name="Chatroom_Id" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="text" />
+  </EntityType>
+  <EntityType Name="chatroom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Topic" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Department_Id" Type="bigint" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Employee_Id" Type="bigint" Nullable="false" />
+    <Property Name="Chatroom_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_chatmessage_chatroom">
+    <End Role="chatroom" Type="Self.chatroom" Multiplicity="1" />
+    <End Role="chatmessage" Type="Self.chatmessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chatroom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="chatmessage">
+        <PropertyRef Name="Chatroom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chatmessage_employee_sender">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="chatmessage" Type="Self.chatmessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="chatmessage">
+        <PropertyRef Name="Sender_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_department">
+    <End Role="department" Type="Self.department" Multiplicity="1" />
+    <End Role="employee" Type="Self.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_members_chatroom">
+    <End Role="chatroom" Type="Self.chatroom" Multiplicity="1" />
+    <End Role="members" Type="Self.members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chatroom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="members">
+        <PropertyRef Name="Chatroom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_members_employee">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="members" Type="Self.members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="members">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ICTModelContainer">
+    <EntitySet Name="chatmessage" EntityType="Self.chatmessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chatroom" EntityType="Self.chatroom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="members" EntityType="Self.members" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_chatmessage_chatroom" Association="Self.FK_chatmessage_chatroom">
+      <End Role="chatroom" EntitySet="chatroom" />
+      <End Role="chatmessage" EntitySet="chatmessage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chatmessage_employee_sender" Association="Self.FK_chatmessage_employee_sender">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="chatmessage" EntitySet="chatmessage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_department" Association="Self.FK_employee_department">
+      <End Role="department" EntitySet="department" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_members_chatroom" Association="Self.FK_members_chatroom">
+      <End Role="chatroom" EntitySet="chatroom" />
+      <End Role="members" EntitySet="members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_members_employee" Association="Self.FK_members_employee">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="members" EntitySet="members" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ICTModelContainer" CdmEntityContainer="ICTEntities3">
+    <EntitySetMapping Name="chatmessage">
+      <EntityTypeMapping TypeName="ICTModel.chatmessage">
+        <MappingFragment StoreEntitySet="chatmessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sender_Id" ColumnName="Sender_Id" />
+          <ScalarProperty Name="Chatroom_Id" ColumnName="Chatroom_Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chatroom">
+      <EntityTypeMapping TypeName="ICTModel.chatroom">
+        <MappingFragment StoreEntitySet="chatroom">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="department">
+      <EntityTypeMapping TypeName="ICTModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee">
+      <EntityTypeMapping TypeName="ICTModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="ICTModel.members">
+        <MappingFragment StoreEntitySet="members">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Chatroom_Id" ColumnName="Chatroom_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

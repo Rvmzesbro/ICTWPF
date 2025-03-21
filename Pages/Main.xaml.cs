@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ICT.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для Main.xaml
+    /// </summary>
+    public partial class Main : Page
+    {
+        public Main()
+        {
+            InitializeComponent();
+        }
+
+        private void Button_CloseApplication(object sender, RoutedEventArgs e)
+        {
+            App.MainWindow.Close();
+        }
+
+        private void Button_EmployeeFinder(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeeFinder());
+        }
+
+        private void SelectingItemsControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}
