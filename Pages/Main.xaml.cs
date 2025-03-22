@@ -51,5 +51,9 @@ namespace ICT.Pages
             throw new System.NotImplementedException();
         }
 
+        private void DGChat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

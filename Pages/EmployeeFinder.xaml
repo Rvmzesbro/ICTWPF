@@ -43,11 +43,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBox x:Name="Search" Width="150" Text="search employee" GotFocus="Search_GotFocus" LostFocus="InputElement_OnLostFocus"></TextBox>
+                <TextBox TextChanged="Search_TextChanged" x:Name="Search" Width="150" Text="search employee" GotFocus="Search_GotFocus" LostFocus="InputElement_OnLostFocus"></TextBox>
             </StackPanel>
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
-                    
+                    <ListBox x:Name="EmployeeListBox" DisplayMemberPath="Name">
+                        
+                    </ListBox>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

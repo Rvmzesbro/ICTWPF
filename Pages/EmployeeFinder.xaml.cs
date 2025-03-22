@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace ICT.Pages
     /// </summary>
     public partial class EmployeeFinder : Page
     {
+        private List<employee> employees = new List<employee>();
         public EmployeeFinder()
         {
             InitializeComponent();
+            employees = App.db.employee.ToList();
+            EmployeeListBox.ItemsSource = employees;
         }
 
         
@@ -41,6 +45,18 @@ namespace ICT.Pages
             {
                 Search.Text = "";
             }
+        }
+
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // в верстке добавили DisplayMemberPath эта хрень показывает свойство Name у каждого объекта
+            var TextUser = Search.Text.ToLower();
+            var FoundEmployees = employees.Where(p => p.Name.ToLower().Contains(TextUser)).ToList();
+            if (this.EmployeeListBox == null)
+            {
+                return;
+            }
+            EmployeeListBox.ItemsSource = FoundEmployees;
         }
     }
 }

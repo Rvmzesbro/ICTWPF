@@ -27,7 +27,7 @@
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
+                <DataGrid SelectionChanged="DGChat_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Topic" Binding="{Binding Topic}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Last Message" Binding="{Binding LastChatMessage.Date}"></DataGridTextColumn>
