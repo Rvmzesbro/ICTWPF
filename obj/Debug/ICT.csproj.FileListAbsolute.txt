@@ -26,3 +26,5 @@ C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\bin\Debug\EntityFramework.Sql
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\ICT_Content.g.cs
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\ICT.csproj.Up2Date
+C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChatWindow.g.cs
+C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChatWindow.baml

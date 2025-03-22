@@ -53,7 +53,7 @@ namespace ICT.Pages
 
         private void DGChat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            App.MainWindow.MainFrame.Navigate(new ChatWindow());
         }
     }
 }

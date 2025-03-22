@@ -22,11 +22,13 @@ namespace ICT.Pages
     public partial class EmployeeFinder : Page
     {
         private List<employee> employees = new List<employee>();
+        private List<department> departments = new List<department>();
         public EmployeeFinder()
         {
             InitializeComponent();
             employees = App.db.employee.ToList();
             EmployeeListBox.ItemsSource = employees;
+            departments = App.db.department.ToList();
         }
 
         
@@ -49,6 +51,8 @@ namespace ICT.Pages
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+
             // в верстке добавили DisplayMemberPath эта хрень показывает свойство Name у каждого объекта
             var TextUser = Search.Text.ToLower();
             var FoundEmployees = employees.Where(p => p.Name.ToLower().Contains(TextUser)).ToList();
@@ -58,5 +62,7 @@ namespace ICT.Pages
             }
             EmployeeListBox.ItemsSource = FoundEmployees;
         }
+
+        
     }
 }

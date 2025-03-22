@@ -25,7 +25,7 @@
                 <TextBlock Text="Departments"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <CheckBox Content="Admin"></CheckBox>
+                <CheckBox x:Name="CheckAdmin" Content="Admin"></CheckBox>
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <CheckBox Content="IT Helpdesk"></CheckBox>
@@ -47,9 +47,7 @@
             </StackPanel>
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
-                    <ListBox x:Name="EmployeeListBox" DisplayMemberPath="Name">
-                        
-                    </ListBox>
+                    <ListBox x:Name="EmployeeListBox" DisplayMemberPath="Name"></ListBox>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
