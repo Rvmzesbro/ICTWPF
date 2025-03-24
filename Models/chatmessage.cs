@@ -11,7 +11,8 @@ namespace ICT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class chatmessage
     {
         public long Id { get; set; }
@@ -22,5 +23,18 @@ namespace ICT.Models
     
         public virtual chatroom chatroom { get; set; }
         public virtual employee employee { get; set; }
+
+        //public employee EmployeeName
+        //{
+        //    get
+        //    {
+        //        if(this.employee == null)
+        //        {
+        //            return null;
+        //        }
+        //        return employee;
+        //    }
+        //}
     }
+
 }

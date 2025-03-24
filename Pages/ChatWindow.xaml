@@ -19,16 +19,27 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Width="100" HorizontalAlignment="Left">
-            <DataGrid >
-                <Button Content="Add User"/>
-                <Button Content="Change"/>
-                <Button/>
+            <DataGrid x:Name="DGMembers">
+                
             </DataGrid>
+            <Button Content="Add User"/>
+            <Button Content="Change Topic"/>
+            <Button Content="Leave Chatroom"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="400">
-            <ListBox>
-                
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="420">
+            <ListBox x:Name="DGChat">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="["/>
+                            <Run Text="{Binding Date, StringFormat='HH:mm'}"/>
+                            <Run Text="]"/>
+                            <Run Text="{Binding Sender_Id}"/>
+                            <Run Text="{Binding Message}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
 

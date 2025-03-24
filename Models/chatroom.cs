@@ -31,18 +31,7 @@ namespace ICT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<members> members { get; set; }
 
-        public chatmessage LastChatMessage
-        {
-            get
-            {
-                if(this.chatmessage.Count == 0)
-                {
-                    return null;
-                }
-
-                return chatmessage.OrderBy(p => p.Date).Last();
-            }
-        }
+        
 
         
     }

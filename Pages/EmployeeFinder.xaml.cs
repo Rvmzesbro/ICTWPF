@@ -1,6 +1,7 @@
 ﻿using ICT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,14 @@ namespace ICT.Pages
     public partial class EmployeeFinder : Page
     {
         private List<employee> employees = new List<employee>();
-        private List<department> departments = new List<department>();
+        
         public EmployeeFinder()
         {
             InitializeComponent();
             employees = App.db.employee.ToList();
             EmployeeListBox.ItemsSource = employees;
-            departments = App.db.department.ToList();
+            
+            
         }
 
         
@@ -52,17 +54,47 @@ namespace ICT.Pages
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-
             // в верстке добавили DisplayMemberPath эта хрень показывает свойство Name у каждого объекта
             var TextUser = Search.Text.ToLower();
-            var FoundEmployees = employees.Where(p => p.Name.ToLower().Contains(TextUser)).ToList();
+            employees = employees.Where(p => p.Name.ToLower().Contains(TextUser)).ToList();
+
             if (this.EmployeeListBox == null)
             {
-                return;
+                return ;
             }
-            EmployeeListBox.ItemsSource = FoundEmployees;
+            EmployeeListBox.ItemsSource = employees;
         }
 
         
+
+        private void DepartmentFilterChanged(object sender, RoutedEventArgs e)
+        {
+            var SelectDepartments = new List<string>();
+
+            if (CheckAdmin.IsChecked == true)
+            {
+                SelectDepartments.Add("1");
+            }
+            if (CheckIT.IsChecked == true)
+            {
+                SelectDepartments.Add("2");
+            }
+            if (CheckSales.IsChecked == true)
+            {
+                SelectDepartments.Add("3");
+            }
+            if (CheckMarketing.IsChecked == true)
+            {
+                SelectDepartments.Add("4");
+            }
+
+            employees = employees.Where(p => SelectDepartments.Contains(p.Department_Id.ToString())).ToList();
+            
+            if(this.EmployeeListBox == null)
+            {
+                return;
+            }
+            EmployeeListBox.ItemsSource = employees;
+        }
     }
 }

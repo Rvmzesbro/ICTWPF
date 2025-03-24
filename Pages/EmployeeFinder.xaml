@@ -24,17 +24,26 @@
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <TextBlock Text="Departments"></TextBlock>
             </StackPanel>
+            <!--<StackPanel>
+                <ItemsControl ItemsSource="{Binding departments}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Name}"></CheckBox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>-->
             <StackPanel Grid.Row="1">
-                <CheckBox x:Name="CheckAdmin" Content="Admin"></CheckBox>
+                <CheckBox x:Name="CheckAdmin" Content="Admin" Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
             </StackPanel>
             <StackPanel Grid.Row="2">
-                <CheckBox Content="IT Helpdesk"></CheckBox>
+                <CheckBox x:Name="CheckIT" Content="IT Helpdesk" Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
             </StackPanel>
             <StackPanel Grid.Row="3">
-                <CheckBox Content="Soles"></CheckBox>
+                <CheckBox x:Name="CheckSales" Content="Sales" Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
             </StackPanel>
             <StackPanel Grid.Row="4">
-                <CheckBox Content="Marketing"></CheckBox>
+                <CheckBox x:Name="CheckMarketing" Content="Marketing" Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1">

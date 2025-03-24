@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,24 @@ namespace ICT.Pages
     /// </summary>
     public partial class ChatWindow : Page
     {
+        public List<chatmessage> chatmessages = new List<chatmessage>();
         public ChatWindow()
         {
             InitializeComponent();
+            chatmessages = App.db.chatmessage.ToList();
+            //DGChat.ItemsSource = chatmessages;
+            //DGMembers.ItemsSource = App.db.members.ToList();
+
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            using (var context = new ICTEntities3())
+            {
+                var messages = context.chatmessage.OrderBy(p => p.Date).ToList();
+                DGChat.ItemsSource = messages;
+            }
         }
     }
 }

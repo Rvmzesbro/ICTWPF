@@ -124,6 +124,8 @@
     <Compile Include="Models\members.cs">
       <DependentUpon>ICT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partial\chatmessage.cs" />
+    <Compile Include="Models\Partial\chatroom.cs" />
     <Compile Include="Pages\ChatWindow.xaml.cs">
       <DependentUpon>ChatWindow.xaml</DependentUpon>
     </Compile>
@@ -184,8 +186,6 @@
       <LastGenOutput>ICT.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Parials\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

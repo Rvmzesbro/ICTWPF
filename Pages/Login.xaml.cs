@@ -50,9 +50,8 @@ namespace ICT.Pages
                     Properties.Settings.Default.Save();
                 }
 
-                using (var db = new ICTEntities3())
-                {
-                    EmployeeContext = db.employee.FirstOrDefault(p => p.Username == username && p.Password == password);
+                
+                    EmployeeContext = App.db.employee.FirstOrDefault(p => p.Username == username && p.Password == password);
                     if (EmployeeContext != null)
                     {
                         NavigationService.Navigate(new Main(EmployeeContext));
@@ -61,7 +60,7 @@ namespace ICT.Pages
                     {
                         return;
                     }
-                }
+                
             }
         }
 
