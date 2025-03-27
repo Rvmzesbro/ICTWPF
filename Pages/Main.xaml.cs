@@ -22,6 +22,7 @@ namespace ICT.Pages
     public partial class Main : Page
     {
         public employee EmployeeContext {  get; set; }
+        public chatroom ChatroomContext { get; set; }
         
         public Main(employee employeeContext)
         {
@@ -43,17 +44,17 @@ namespace ICT.Pages
 
         private void Button_EmployeeFinder(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmployeeFinder());
+            NavigationService.Navigate(new EmployeeFinder(null));
         }
 
-        private void SelectingItemsControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
+       
 
         private void DGChat_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            App.MainWindow.MainFrame.Navigate(new ChatWindow());
+            if (DGChat.SelectedItem is chatroom chatroom)
+            {
+                NavigationService.Navigate(new ChatWindow(chatroom));
+            }
         }
     }
 }

@@ -12,15 +12,12 @@ namespace ICT.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class chatmessage
+    public partial class sysdiagrams
     {
-        public long Id { get; set; }
-        public long Sender_Id { get; set; }
-        public long Chatroom_Id { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Message { get; set; }
-    
-        public virtual chatroom chatroom { get; set; }
-        public virtual employee employee { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

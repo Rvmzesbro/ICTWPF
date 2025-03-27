@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -19,28 +20,32 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Width="100" HorizontalAlignment="Left">
-            <DataGrid x:Name="DGMembers">
-                
-            </DataGrid>
-            <Button Content="Add User"/>
-            <Button Content="Change Topic"/>
+            <ListView x:Name="LVMembers">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding employee.Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="Add User" Click="Button_Click" x:Name="AddUser"/>
+            <Button Content="Change Topic" Click="Change_Topic"/>
             <Button Content="Leave Chatroom"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="420">
-            <ListBox x:Name="DGChat">
-                <ListBox.ItemTemplate>
+            <ListView x:Name="LVMessage">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock>
-                            <Run Text="["/>
-                            <Run Text="{Binding Date, StringFormat='HH:mm'}"/>
-                            <Run Text="]"/>
-                            <Run Text="{Binding Sender_Id}"/>
-                            <Run Text="{Binding Message}"/>
-                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Date, StringFormat='[HH:MM]'}"></TextBlock>
+                            <TextBlock Text="{Binding employee.Name}" Margin="5 0 0 0"></TextBlock>
+                            <TextBlock Text="{Binding Message}" Margin="5 0 0 0"></TextBlock>
+                        </StackPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
@@ -48,6 +53,9 @@
             <Button x:Name="SendButton" Width="120" Height="120" Background="LightSkyBlue">
                 <TextBlock Text="Send" FontSize="20" FontWeight="Bold"></TextBlock>
             </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Button Content="Back" Click="Button_Click_1" Width="100" Height="20"></Button>
         </StackPanel>
     </Grid>
 </Page>

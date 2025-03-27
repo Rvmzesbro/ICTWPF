@@ -17,35 +17,31 @@ using System.Windows.Shapes;
 namespace ICT.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ChatWindow.xaml
+    /// Логика взаимодействия для ChangesTopic.xaml
     /// </summary>
-    public partial class ChatWindow : Page
+    public partial class ChangesTopic : Page
     {
-
-        public long _chatId;
         public chatroom ContextChatroom { get; set; }
-
-        public ChatWindow(chatroom chatroom)
+        public ChangesTopic(chatroom chatroom)
         {
             InitializeComponent();
-            _chatId = chatroom.Id;
             ContextChatroom = chatroom;
-            LVMessage.ItemsSource = App.db.chatmessage.Where(p => p.Chatroom_Id == _chatId).ToList();
-
-            LVMembers.ItemsSource = App.db.members.Where(p => p.Chatroom_Id == _chatId).ToList();
         }
 
+        public ChangesTopic()
+        {
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var TopicUser = NewTopic.Text;
+            ContextChatroom.Topic = TopicUser;
+            
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            App.MainWindow.MainFrame.Navigate(new EmployeeFinder(ContextChatroom));
-            
-        }
-
-        private void Change_Topic(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ChangesTopic(ContextChatroom));
+            App.db.SaveChanges();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

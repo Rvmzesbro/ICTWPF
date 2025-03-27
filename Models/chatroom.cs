@@ -11,9 +11,7 @@ namespace ICT.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Windows.Media.Animation;
-
+    
     public partial class chatroom
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +20,13 @@ namespace ICT.Models
             this.chatmessage = new HashSet<chatmessage>();
             this.members = new HashSet<members>();
         }
-
+    
         public long Id { get; set; }
         public string Topic { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chatmessage> chatmessage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<members> members { get; set; }
-
-        
-
-        
     }
 }

@@ -76,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ChangesTopic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ChatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +130,12 @@
     </Compile>
     <Compile Include="Models\Partial\chatmessage.cs" />
     <Compile Include="Models\Partial\chatroom.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ICT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChangesTopic.xaml.cs">
+      <DependentUpon>ChangesTopic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ChatWindow.xaml.cs">
       <DependentUpon>ChatWindow.xaml</DependentUpon>
     </Compile>

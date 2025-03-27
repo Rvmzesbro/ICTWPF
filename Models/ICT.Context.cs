@@ -30,5 +30,6 @@ namespace ICT.Models
         public virtual DbSet<department> department { get; set; }
         public virtual DbSet<employee> employee { get; set; }
         public virtual DbSet<members> members { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

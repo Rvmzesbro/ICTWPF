@@ -23,13 +23,15 @@ namespace ICT.Pages
     public partial class EmployeeFinder : Page
     {
         private List<employee> employees = new List<employee>();
+        public employee Selectedemployee { get; set; }
         
-        public EmployeeFinder()
+        public chatroom chatroom { get; set; }
+        public EmployeeFinder(chatroom contextChatroom)
         {
             InitializeComponent();
             employees = App.db.employee.ToList();
             EmployeeListBox.ItemsSource = employees;
-            
+            chatroom = contextChatroom;
             
         }
 
@@ -54,15 +56,34 @@ namespace ICT.Pages
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+            var SelectDepartments = new List<string>();
+
+            if (CheckAdmin.IsChecked.Value)
+            {
+                SelectDepartments.Add("1");
+            }
+            if (CheckIT.IsChecked.Value)
+            {
+                SelectDepartments.Add("2");
+            }
+            if (CheckSales.IsChecked.Value)
+            {
+                SelectDepartments.Add("3");
+            }
+            if (CheckMarketing.IsChecked.Value)
+            {
+                SelectDepartments.Add("4");
+            }
+
             // в верстке добавили DisplayMemberPath эта хрень показывает свойство Name у каждого объекта
             var TextUser = Search.Text.ToLower();
-            employees = employees.Where(p => p.Name.ToLower().Contains(TextUser)).ToList();
+            var FilteredList = employees.Where(p => p.Name.ToLower().Contains(TextUser) && SelectDepartments.Contains(p.Department_Id.ToString())).ToList();
 
             if (this.EmployeeListBox == null)
             {
                 return ;
             }
-            EmployeeListBox.ItemsSource = employees;
+            EmployeeListBox.ItemsSource = FilteredList;
         }
 
         
@@ -71,30 +92,57 @@ namespace ICT.Pages
         {
             var SelectDepartments = new List<string>();
 
-            if (CheckAdmin.IsChecked == true)
+            if (CheckAdmin.IsChecked.Value)
             {
                 SelectDepartments.Add("1");
             }
-            if (CheckIT.IsChecked == true)
+            if (CheckIT.IsChecked.Value)
             {
                 SelectDepartments.Add("2");
             }
-            if (CheckSales.IsChecked == true)
+            if (CheckSales.IsChecked.Value)
             {
                 SelectDepartments.Add("3");
             }
-            if (CheckMarketing.IsChecked == true)
+            if (CheckMarketing.IsChecked.Value)
             {
                 SelectDepartments.Add("4");
             }
 
-            employees = employees.Where(p => SelectDepartments.Contains(p.Department_Id.ToString())).ToList();
+            var FilteredList = employees.Where(p => SelectDepartments.Contains(p.Department_Id.ToString())).ToList();
             
             if(this.EmployeeListBox == null)
             {
                 return;
             }
-            EmployeeListBox.ItemsSource = employees;
+            EmployeeListBox.ItemsSource = FilteredList;
+        }
+
+        
+
+        private void EmployeeListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (this.chatroom == null)
+            {
+                return;
+            }
+
+            if (EmployeeListBox.SelectedItem is employee employee)
+            {
+                
+                var members = new members();
+                members.Employee_Id = employee.Id;
+                members.Chatroom_Id = chatroom.Id;
+
+                App.db.members.Add(members);
+                App.db.SaveChanges();
+                NavigationService.Navigate(new ChatWindow(chatroom));
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

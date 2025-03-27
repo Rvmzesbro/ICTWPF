@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Sender_Id" Type="bigint" Nullable="false" />
     <Property Name="Chatroom_Id" Type="bigint" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
@@ -14,21 +14,21 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Topic" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="department">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="employee">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Department_Id" Type="bigint" Nullable="false" />
     <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -38,9 +38,19 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Employee_Id" Type="bigint" Nullable="false" />
     <Property Name="Chatroom_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_chatmessage_chatroom">
     <End Role="chatroom" Type="Self.chatroom" Multiplicity="1" />
@@ -108,6 +118,7 @@
     <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="members" EntityType="Self.members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_chatmessage_chatroom" Association="Self.FK_chatmessage_chatroom">
       <End Role="chatroom" EntitySet="chatroom" />
       <End Role="chatmessage" EntitySet="chatmessage" />

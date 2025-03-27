@@ -20,5 +20,7 @@ namespace ICT.Models
                 return chatmessage.OrderBy(p => p.Date).Last();
             }
         }
+
+        
     }
 }

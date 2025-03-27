@@ -28,3 +28,5 @@ C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\ICT_Content.g.cs
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\ICT.csproj.Up2Date
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChatWindow.g.cs
 C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChatWindow.baml
+C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChangesTopic.g.cs
+C:\Users\web2\Desktop\VisualStudioProjects\ICT\ICT\obj\Debug\Pages\ChangesTopic.baml
