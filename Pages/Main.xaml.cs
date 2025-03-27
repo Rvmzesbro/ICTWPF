@@ -34,7 +34,7 @@ namespace ICT.Pages
         private void Refresh()
         {
             DGName.Text = $"Hello {EmployeeContext.Name}!";
-            DGChat.ItemsSource = App.db.chatroom.ToList();
+            DGChat.ItemsSource = App.db.members.Where(p => p.Employee_Id == EmployeeContext.Id).ToList().Select(x => x.chatroom).ToList();
         }
 
         private void Button_CloseApplication(object sender, RoutedEventArgs e)
