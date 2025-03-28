@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ICT.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Main">
+      Title="Main" Loaded="Page_Loaded">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -27,7 +27,7 @@
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                <DataGrid SelectionChanged="DGChat_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
+                <DataGrid MouseDoubleClick="DGChat_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Topic" Binding="{Binding Topic}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Last Message" Binding="{Binding LastChatMessage.Date}"></DataGridTextColumn>

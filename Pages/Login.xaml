@@ -33,7 +33,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Password" VerticalAlignment="Top"></TextBlock>
-            <TextBox x:Name="Password" Margin="20 0 0 20" GotFocus="Password_GotFocus" LostFocus="Password_LostFocus">
+            <TextBox x:Name="Password" Margin="22 0 0 20" GotFocus="Password_GotFocus" LostFocus="Password_LostFocus">
                 <!--<TextBox.ToolTip>
                     <TextBlock Text="пароль"/>
                 </TextBox.ToolTip>-->

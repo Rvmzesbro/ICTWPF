@@ -133,10 +133,9 @@ namespace ICT.Pages
                 var members = new members();
                 members.Employee_Id = employee.Id;
                 members.Chatroom_Id = chatroom.Id;
-
                 App.db.members.Add(members);
                 App.db.SaveChanges();
-                NavigationService.Navigate(new ChatWindow(chatroom));
+                NavigationService.Navigate(new ChatWindow(chatroom, employee));
             }
         }
 

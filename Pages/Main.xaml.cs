@@ -24,10 +24,10 @@ namespace ICT.Pages
         public employee EmployeeContext {  get; set; }
         public chatroom ChatroomContext { get; set; }
         
-        public Main(employee employeeContext)
+        public Main(employee employee)
         {
             InitializeComponent();
-            EmployeeContext = employeeContext;
+            EmployeeContext = employee;
             Refresh();
         }
 
@@ -49,12 +49,17 @@ namespace ICT.Pages
 
        
 
-        private void DGChat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DGChat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (DGChat.SelectedItem is chatroom chatroom)
             {
-                NavigationService.Navigate(new ChatWindow(chatroom));
+                NavigationService.Navigate(new ChatWindow(chatroom, EmployeeContext));
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

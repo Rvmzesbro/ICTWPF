@@ -24,17 +24,23 @@ namespace ICT.Pages
 
         public long _chatId;
         public chatroom ContextChatroom { get; set; }
+        public employee ContextEmployee { get; set; }
 
-        public ChatWindow(chatroom chatroom)
+        public ChatWindow(chatroom chatroom, employee employee)
         {
             InitializeComponent();
             _chatId = chatroom.Id;
             ContextChatroom = chatroom;
-            LVMessage.ItemsSource = App.db.chatmessage.Where(p => p.Chatroom_Id == _chatId).ToList();
-
-            LVMembers.ItemsSource = App.db.members.Where(p => p.Chatroom_Id == _chatId).ToList();
+            ContextEmployee = employee;
+            Refresh();
+            
         }
 
+        private void Refresh()
+        {
+            LVMessage.ItemsSource = App.db.chatmessage.Where(p => p.Chatroom_Id == _chatId).ToList();
+            LVMembers.ItemsSource = App.db.members.Where(p => p.Chatroom_Id == _chatId).ToList();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +57,31 @@ namespace ICT.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Button_Send(object sender, RoutedEventArgs e)
+        {
+            var message = MessageBox.Text;
+            chatmessage chatmessage = new chatmessage { Sender_Id = ContextEmployee.Id, Chatroom_Id = _chatId, Date = DateTime.Now, Message = message};
+            
+            App.db.chatmessage.Add(chatmessage);
+            App.db.SaveChanges();
+            Refresh();
+
+        }
+
+        private void Leave_Chatroom(object sender, RoutedEventArgs e)
+        {
+            var member = App.db.members.FirstOrDefault(p => p.Chatroom_Id == _chatId && p.Employee_Id == ContextEmployee.Id);
+            App.db.members.Remove(member);
+            App.db.SaveChanges();
+            NavigationService.Navigate(new Main(ContextEmployee));
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            Button_Send(sender, e);
         }
     }
 }

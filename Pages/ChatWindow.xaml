@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ICT.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ChatWindow">
+      Title="ChatWindow" Loaded="Page_Loaded">
 
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
@@ -31,7 +31,7 @@
             </ListView>
             <Button Content="Add User" Click="Button_Click" x:Name="AddUser"/>
             <Button Content="Change Topic" Click="Change_Topic"/>
-            <Button Content="Leave Chatroom"/>
+            <Button Content="Leave Chatroom" Click="Leave_Chatroom"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="420">
@@ -50,7 +50,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <TextBox x:Name="MessageBox" Width="400" Height="120"></TextBox>
-            <Button x:Name="SendButton" Width="120" Height="120" Background="LightSkyBlue">
+            <Button x:Name="SendButton" Width="120" Height="120" Background="LightSkyBlue" Click="Button_Send">
                 <TextBlock Text="Send" FontSize="20" FontWeight="Bold"></TextBlock>
             </Button>
         </StackPanel>
