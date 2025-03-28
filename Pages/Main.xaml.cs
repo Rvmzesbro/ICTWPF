@@ -21,7 +21,7 @@ namespace ICT.Pages
     /// </summary>
     public partial class Main : Page
     {
-        public employee EmployeeContext {  get; set; }
+        public  employee EmployeeContext {  get; set; }
         public chatroom ChatroomContext { get; set; }
         
         public Main(employee employee)

@@ -16,6 +16,7 @@ namespace ICT
     {
         public static ICTEntities3 db = new ICTEntities3();
         public static MainWindow MainWindow;
+
         
     }
 }

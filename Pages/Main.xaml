@@ -26,14 +26,15 @@
             <TextBlock Text="Your open chatrooms"></TextBlock>
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            
+           
                 <DataGrid MouseDoubleClick="DGChat_MouseDoubleClick" AutoGenerateColumns="False" IsReadOnly="True" x:Name="DGChat">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Topic" Binding="{Binding Topic}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Last Message" Binding="{Binding LastChatMessage.Date}"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+           
         </ScrollViewer>
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button Content="Employee Finder" Click="Button_EmployeeFinder"></Button>

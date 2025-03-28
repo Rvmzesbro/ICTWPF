@@ -28,8 +28,11 @@ namespace ICT.Pages
         public Login()
         {
             InitializeComponent();
+           
+            Username.Text = Properties.Settings.Default.username;
+            Password.Text = Properties.Settings.Default.password;
             EmployeeContext = new employee();
-            this.Loaded += Login_Load;
+           
         }
 
         private void Button_Ok(object sender, RoutedEventArgs e)
@@ -64,14 +67,7 @@ namespace ICT.Pages
             }
         }
 
-        private void Login_Load(object sender, RoutedEventArgs e)
-        {
-            if (Properties.Settings.Default.username != string.Empty)
-            {
-                Username.Text = Properties.Settings.Default.username;
-                Password.Text = Properties.Settings.Default.password;
-            }
-        }
+      
 
         private void Button_Cancel(object sender, RoutedEventArgs e)
         {

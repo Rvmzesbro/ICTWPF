@@ -55,7 +55,11 @@ namespace ICT.Pages
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Filter();
+        }
 
+        private void Filter()
+        {
             var SelectDepartments = new List<string>();
 
             if (CheckAdmin.IsChecked.Value)
@@ -81,41 +85,15 @@ namespace ICT.Pages
 
             if (this.EmployeeListBox == null)
             {
-                return ;
+                return;
             }
             EmployeeListBox.ItemsSource = FilteredList;
         }
 
-        
 
         private void DepartmentFilterChanged(object sender, RoutedEventArgs e)
         {
-            var SelectDepartments = new List<string>();
-
-            if (CheckAdmin.IsChecked.Value)
-            {
-                SelectDepartments.Add("1");
-            }
-            if (CheckIT.IsChecked.Value)
-            {
-                SelectDepartments.Add("2");
-            }
-            if (CheckSales.IsChecked.Value)
-            {
-                SelectDepartments.Add("3");
-            }
-            if (CheckMarketing.IsChecked.Value)
-            {
-                SelectDepartments.Add("4");
-            }
-
-            var FilteredList = employees.Where(p => SelectDepartments.Contains(p.Department_Id.ToString())).ToList();
-            
-            if(this.EmployeeListBox == null)
-            {
-                return;
-            }
-            EmployeeListBox.ItemsSource = FilteredList;
+            Filter();
         }
 
         

@@ -14,17 +14,10 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+           
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <TextBlock Text="Departments"></TextBlock>
-            </StackPanel>
+         
             <!--<StackPanel>
                 <ItemsControl ItemsSource="{Binding departments}">
                     <ItemsControl.ItemTemplate>
@@ -34,19 +27,18 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>-->
-            <StackPanel Grid.Row="1">
+            
                 <CheckBox x:Name="CheckAdmin" Content="Admin"  Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
-            </StackPanel>
-            <StackPanel Grid.Row="2">
+           
+           
                 <CheckBox x:Name="CheckIT" Content="IT Helpdesk"  Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
-            </StackPanel>
-            <StackPanel Grid.Row="3">
+            
+           
                 <CheckBox x:Name="CheckSales" Content="Sales"  Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
-            </StackPanel>
-            <StackPanel Grid.Row="4">
+            
+           
                 <CheckBox x:Name="CheckMarketing" Content="Marketing"  Checked="DepartmentFilterChanged" Unchecked="DepartmentFilterChanged"></CheckBox>
-            </StackPanel>
-            <StackPanel Grid.Row="5">
+          
                 <Button Width="100" Height="20" Content="Back" Click="Button_Click"/>
             </StackPanel>
         </Grid>

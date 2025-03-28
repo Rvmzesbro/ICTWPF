@@ -67,7 +67,6 @@ namespace ICT.Pages
             App.db.chatmessage.Add(chatmessage);
             App.db.SaveChanges();
             Refresh();
-
         }
 
         private void Leave_Chatroom(object sender, RoutedEventArgs e)
@@ -81,7 +80,12 @@ namespace ICT.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
-            Button_Send(sender, e);
+           
+        }
+
+        private void BBack_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
